@@ -8,4 +8,12 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    build: {
+        // Ganti dari 'esbuild' ke 'oxc' (default Vite 8)
+        minify: 'oxc',
+        target: 'es2020',
+        chunkSizeWarningLimit: 1000,
+        sourcemap: false,
+        cssCodeSplit: true,
+    },
 });

@@ -7,7 +7,6 @@ use App\Models\Category;
 use App\Models\Article;
 use App\Models\Gallery;
 use App\Models\Setting;
-use App\Models\Testimonial;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -48,14 +47,10 @@ class DatabaseSeeder extends Seeder
         // Membuat 12 foto galeri dummy
         Gallery::factory(12)->create();
 
-        // 5. Buat Testimoni
-        // Membuat 5 testimoni dummy
-        Testimonial::factory(5)->create();
-
-        // 6. Buat Settings (Info Kontak & Website)
+        // 5. Buat Settings (Info Kontak & Website)
         $settings = [
             ['key' => 'site_name', 'value' => 'Tasty Food'],
-            ['key' => 'contact_email', 'value' => 'tastyfood@gmail.com'],
+            ['key' => 'contact_email', 'value' => 'marketing@cyberlabs.co.id'],
             ['key' => 'contact_phone', 'value' => '+62 812 3456 7890'],
             ['key' => 'address', 'value' => 'Kota Bandung, Jawa Barat'],
             ['key' => 'facebook_url', 'value' => 'https://facebook.com/tastyfood'],

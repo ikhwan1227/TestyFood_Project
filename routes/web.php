@@ -18,8 +18,6 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ArticleController as AdminArticleController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\GalleryController as AdminGalleryController;
-use App\Http\Controllers\Admin\TestimonialController as AdminTestimonialController;
-use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\SettingController;
 
 /*
@@ -57,21 +55,28 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    // Tentang Kami
+    Route::get('/about', [\App\Http\Controllers\Admin\AboutController::class, 'edit'])->name('about.edit');
+    Route::put('/about', [\App\Http\Controllers\Admin\AboutController::class, 'update'])->name('about.update');
+
     // Manajemen Artikel (Berita)
     Route::resource('articles', AdminArticleController::class);
 
     // Manajemen Kategori
-    Route::resource('categories', AdminCategoryController::class);
+    Route::resource('categories', AdminCategoryController::class)->except(['create', 'show', 'edit']);
 
     // Manajemen Galeri
     // Kita batasi hanya index, create, store, destroy (karena galeri biasanya tidak diedit)
-    Route::resource('galleries', AdminGalleryController::class)->except(['show', 'edit', 'update']);
+    Route::resource('galleries', AdminGalleryController::class)->except(['show', 'edit',]);
 
-    // Manajemen Testimoni
-    Route::resource('testimonials', AdminTestimonialController::class);
-
-    // Manajemen Pesan Kontak (Hanya lihat dan hapus)
-    Route::resource('contacts', AdminContactController::class)->only(['index', 'show', 'destroy']);
+    // Manajemen Notifikasi sistem
+    Route::prefix('notifications')->name('notifications.')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\NotificationController::class, 'index'])->name('index');
+        Route::post('/mark-all-read', [\App\Http\Controllers\Admin\NotificationController::class, 'markAllAsRead'])->name('markAllRead');
+        Route::post('/clear-all', [\App\Http\Controllers\Admin\NotificationController::class, 'clearAll'])->name('clearAll');
+        Route::post('/{notification}/read', [\App\Http\Controllers\Admin\NotificationController::class, 'markAsRead'])->name('read');
+        Route::delete('/{notification}', [\App\Http\Controllers\Admin\NotificationController::class, 'destroy'])->name('destroy');
+    });
 
     // Pengaturan Website (Settings)
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');

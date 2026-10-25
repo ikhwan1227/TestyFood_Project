@@ -7,17 +7,13 @@
     <section class="section gray">
         <div class="wrap two-cols">
             <div>
-                <h2>TASTY FOOD</h2>
-                <p><b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ornare, augue eu rutrum
-                        commodo, dui diam convallis arcu, eget consectetur ex sem eget lacus. Nullam vitae dignissim
-                        neque, vel luctus ex. Fusce sit amet viverra ante.</b></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ornare, augue eu rutrum
-                    commodo, dui diam convallis arcu, eget consectetur ex sem eget lacus. Nullam vitae dignissim
-                    neque, vel luctus ex. Fusce sit amet viverra ante.</p>
+                <h2>{{ $about->title_1 }}</h2>
+                <p><b>{{ $about->description_1a }}</b></p>
+                <p>{{ $about->description_1b }}</p>
             </div>
             <div class="image-pair portrait">
-                <img src="{{ asset('assets/brooke-lark-oaz0raysASk-unsplash.webp') }}" alt="Hidangan Tasty Food" loading="lazy">
-                <img src="{{ asset('assets/sebastian-coman-photography-eBmyH7oO5wY-unsplash.webp') }}" alt="Hidangan Tasty Food" loading="lazy">
+                <img src="{{ $about->getImageUrl('image_1a') }}" alt="{{ $about->title_1 }}" loading="lazy" width="400" height="600">
+                <img src="{{ $about->getImageUrl('image_1b') }}" alt="{{ $about->title_1 }}" loading="lazy" width="400" height="600">
             </div>
         </div>
     </section>
@@ -25,32 +21,20 @@
     <section class="section wrap about">
         <div class="two-cols">
             <div class="image-pair">
-                <img src="{{ asset('assets/fathul-abrar-T-qI_MI2EMA-unsplash.webp') }}" alt="Hidangan Tasty Food" loading="lazy">
-                <img src="{{ asset('assets/michele-blackwell-rAyCBQTH7ws-unsplash.webp') }}" alt="Hidangan Tasty Food" loading="lazy">
+                <img src="{{ $about->getImageUrl('image_2a') }}" alt="{{ $about->title_2 }}" loading="lazy" width="400" height="400">
+                <img src="{{ $about->getImageUrl('image_2b') }}" alt="{{ $about->title_2 }}" loading="lazy" width="400" height="400">
             </div>
             <div>
-                <h2>VISI</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce scelerisque magna aliquet cursus
-                    tempus. Duis viverra metus et turpis elementum elementum. Aliquam rutrum placerat tellus et
-                    suscipit. Curabitur facilisis lectus vitae eros malesuada eleifend. Mauris eget tellus odio.
-                    Phasellus vestibulum turpis ac sem commodo, at posuere eros consequat. Duis nec ex at ante
-                    volutpat posuere. Morbi vel nunc tortor. Nulla facilisi. Nulla accumsan ullamcorper purus nec
-                    venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer imperdiet erat vel
-                    leo rutrum lobortis.</p>
+                <h2>{{ $about->title_2 }}</h2>
+                <p>{{ $about->description_2 }}</p>
             </div>
         </div>
         <div class="two-cols">
             <div>
-                <h2>MISI</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce scelerisque magna aliquet cursus
-                    tempus. Duis viverra metus et turpis elementum elementum. Aliquam rutrum placerat tellus et
-                    suscipit. Curabitur facilisis lectus vitae eros malesuada eleifend. Mauris eget tellus odio.
-                    Phasellus vestibulum turpis ac sem commodo, at posuere eros consequat. Duis nec ex at ante
-                    volutpat posuere. Morbi vel nunc tortor. Nulla facilisi. Nulla accumsan ullamcorper purus nec
-                    venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer imperdiet erat vel
-                    leo rutrum lobortis.</p>
+                <h2>{{ $about->title_3 }}</h2>
+                <p>{{ $about->description_3 }}</p>
             </div>
-            <img class="wide" src="{{ asset('assets/sanket-shah-SVA7TyHxojY-unsplash.webp') }}" alt="Hidangan Tasty Food" loading="lazy">
+            <img class="wide" src="{{ $about->getImageUrl('image_3') }}" alt="{{ $about->title_3 }}" loading="lazy" width="800" height="400">
         </div>
     </section>
 @endsection
